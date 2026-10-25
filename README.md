@@ -1,67 +1,71 @@
-# Password Encryption System — Java Swing + MySQL JDBC
+Password Encryption System
 
-## Features
-- Swing GUI for registration and login
-- Password strength checker
-- Random password generator
-- Password hashing with PBKDF2-HMAC-SHA256, a unique random salt, and 210,000 iterations
-- MySQL storage for users, password hash records, and login activity
-- Login activity viewer
+Privacy by Design. Security by Purpose.
 
-**Important:** Passwords are not stored as plaintext. This is a student/demo project, not a production-ready authentication service.
+Project Overview
 
-## Requirements
-- JDK 11 or later
-- MySQL Server
-- MySQL Connector/J (JDBC driver)
+The Password Encryption System is a Java-based desktop application developed to demonstrate secure password management and user authentication. It uses Java Swing to provide a graphical user interface and MySQL to store user-related information. JDBC is used to establish communication between the Java application and the MySQL database.
 
-## 1. Create the database
-Open MySQL Workbench or the MySQL command-line client and execute `database.sql`.
+Features
 
-## 2. Configure database credentials
-Defaults in the Java file are:
-- URL: `jdbc:mysql://localhost:3306/password_system?useSSL=false&serverTimezone=UTC`
-- Username: `root`
-- Password: empty
+User Registration: Allows new users to create accounts by providing the required details.
 
-For a local setup, edit the constants near the top of `PasswordEncryptionSystemGUI.java`, or set environment variables:
-- `DB_URL`
-- `DB_USER`
-- `DB_PASSWORD`
+Secure Login: Authenticates users using their registered credentials.
 
-Do not commit real database passwords to a public repository.
+Password Strength Checker: Evaluates password strength based on its characteristics.
 
-## 3. Add MySQL Connector/J
-Download MySQL Connector/J from the official MySQL website and note the JAR path, for example `mysql-connector-j-8.x.x.jar`.
+Random Password Generator: Generates random passwords to help users create stronger passwords.
 
-## 4. Compile and run
+Password Hashing: Uses PBKDF2-HMAC-SHA256 with a unique salt to derive password hashes instead of storing passwords as plain text.
 
-### Windows (Command Prompt)
-Run these commands in the folder containing the Java source and Connector/J JAR. Replace the JAR filename with your actual filename:
+MySQL Database Integration: Uses JDBC to connect the Java application with the database.
 
-```bat
-javac PasswordEncryptionSystemGUI.java
-java -cp ".;mysql-connector-j-8.x.x.jar" PasswordEncryptionSystemGUI
-```
+Login Activity Tracking: Maintains records of user registration and login activity.
 
-### macOS / Linux
-```bash
-javac PasswordEncryptionSystemGUI.java
-java -cp ".:mysql-connector-j-8.x.x.jar" PasswordEncryptionSystemGUI
-```
+Technologies Used
 
-The source uses only standard `java.sql` APIs, so `javac` does not need the Connector/J JAR. The driver JAR must be on the runtime classpath.
+Java (JDK 11 or later): Core programming language used to develop the application.
 
-## Troubleshooting
-- **No suitable driver:** Connector/J is missing from the runtime classpath or the JAR filename in the command is wrong.
-- **Access denied:** Check `DB_USER` and `DB_PASSWORD`.
-- **Unknown database:** Execute `database.sql` first.
-- **Connection refused:** Start MySQL Server and check the port in `DB_URL`.
+Java Swing: Used to create the graphical user interface.
 
-## Tables
-- `users`: username, email, salted password hash
-- `passwords`: stored password-hash record
-- `login_activity`: registration/login activity
+MySQL: Used for database storage and management.
 
-## Verification status
-The Java source is intended for a local MySQL setup. A live connection cannot be confirmed unless the project is run against your own configured MySQL Server and Connector/J.
+JDBC (MySQL Connector/J): Enables communication between Java and MySQL.
+
+PBKDF2-HMAC-SHA256: Used for password hashing and secure password verification.
+
+System Requirements
+
+JDK 11 or later
+
+MySQL Server
+
+MySQL Connector/J JDBC driver
+
+A Java development environment such as Eclipse, IntelliJ IDEA, or NetBeans
+
+Database
+
+The application is designed to use MySQL tables for storing user details, password-related records, and login activity. Database configuration and JDBC connectivity are required for database operations.
+
+Project Objective
+
+The main objective of this project is to understand password security, user authentication, password hashing, Java GUI development, and database connectivity. It demonstrates how different technologies can be combined to build a password management application.
+
+Future Enhancements
+
+Password reset and recovery functionality
+
+Email verification during registration
+
+Improved login security and input validation
+
+Enhanced graphical user interface
+
+Additional security testing and error handling
+
+Project Status
+
+Academic Project
+
+This project is developed for educational purposes to demonstrate Java programming, password security concepts, and MySQL database integration. Successful execution and database connectivity depend on the local development environment and configuration.
